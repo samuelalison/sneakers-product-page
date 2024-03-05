@@ -1,31 +1,3 @@
-// import { createContext, useState } from "react"; 
-
-// import { ProductsContext } from '@/contexts/ProductContext' 
-
-// export const CartContext = createContext({
-//     isCartOpen: false,
-//     setIsCartopen: () => {},
-// });
-
-
-// export const CartProvider = ({ children }) => {
-//     const {products} = useContext(ProductsContext);
-//    const [isCartOpen, setIsCartOpen] =  useState(false)
-  
- 
-
-
-//     const value = {isCartOpen, setIsCartOpen};
-
-//        return(
-//            <CartContext.Provider value={value}>
-//                 {children}
-//            </CartContext.Provider>
-//        )
-//    }
-
-
-
 import { createContext, useState, useContext } from "react";
 import { ProductsContext } from '@/contexts/ProductContext';
 
