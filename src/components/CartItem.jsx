@@ -16,10 +16,11 @@ const {name, quantity, imageURL, price } = cartItem;
     </div>
 
 
-    <div className='flex gap-2 '>
+    <div className='flex gap-2'>
       <p>${price}</p>
       <p>*</p>
-      <p >{quantity}</p>
+      <p>{quantity}</p>
+      <p><span>$</span>{price * quantity}</p>
     </div>
     </div>
     </div>
