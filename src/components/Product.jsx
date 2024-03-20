@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Image from 'next/image'; 
+import Image from 'next/image';
 import Button from './Button';
 
 import minus from "../../public/icon-minus.svg";
@@ -11,29 +11,28 @@ import imageURL from "../../public/image-product-1.jpg";
 import { ProductsContext } from '@/contexts/ProductContext';
 import { CartContext } from '@/contexts/CartContext';
 
-const Product = ({quantity, setQuantity}) => {
+const Product = () => {
   const { products } = useContext(ProductsContext);
-  const { addToCart } = useContext(CartContext);
-  const { removeCartItem } = useContext(CartContext);
-  const { decrementCartItem } = useContext(CartContext);
-  // const [quantity, setQuantity] = useState(0);
+  const { addToCart, decrementCartItem } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
 
-const handleAddToCart = () => {
-  if (products.length > 0) {
-      addToCart(products[0].id); // Assuming there's only one product for now
-  }
-};
+  const handleAddToCart = () => {
+    if (products.length > 0 && quantity > 0) {
+      // Pass the current quantity state to the addToCart function
+      addToCart(products[0].id, quantity);
+    }
+  };
 
 
-const handleIncrementQuantity = () => {
-  setQuantity(prevQuantity => prevQuantity + 1);
-};
-
+  const handleIncrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
 
   const handleDecrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-      decrementCartItem(products[0].id)
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    } else {
+      decrementCartItem(products[0].id);
     }
   };
 
@@ -44,27 +43,27 @@ const handleIncrementQuantity = () => {
       <div className='md:flex md:gap-24 items-center'>
         <div className="">
           {products.map((product) => (
-            <Image key={product.id} src={imageURL} alt={product.name}   className="w-auto"/>
+            <Image key={product.id} src={imageURL} alt={product.name} className="w-auto" />
           ))}
 
-<div className="flex">
-                  <div className='hidden md:block'> 
-                    <Image alt="" height={100} width={100}  className='py-4 px-2 rounded-3xl w-[100px]' src="/image-product-1-thumbnail.jpg" />
-                  </div>
-                  <div className='hidden md:block'>
-                    <Image alt="" height={100}
-                    width={100}   className='py-4 px-2 rounded-3xl'  src="/image-product-2-thumbnail.jpg" />
-                  </div>
-                  <div className='hidden md:block'>
-                    <Image alt="" height={100} width={100}  className='py-4 px-2 rounded-3xl' src="/image-product-3-thumbnail.jpg" />
-                  </div>
-                  <div className='hidden md:block'>
-                    <Image alt="" height={100} width={100}  className='py-4 px-2 rounded-3xl' src="/image-product-4-thumbnail.jpg" />
-                  </div>
-                </div>
+          <div className="flex">
+            <div className='hidden md:block'>
+              <Image alt="" height={100} width={100} className='py-4 px-2 rounded-3xl w-[100px]' src="/image-product-1-thumbnail.jpg" />
             </div>
+            <div className='hidden md:block'>
+              <Image alt="" height={100}
+                width={100} className='py-4 px-2 rounded-3xl' src="/image-product-2-thumbnail.jpg" />
+            </div>
+            <div className='hidden md:block'>
+              <Image alt="" height={100} width={100} className='py-4 px-2 rounded-3xl' src="/image-product-3-thumbnail.jpg" />
+            </div>
+            <div className='hidden md:block'>
+              <Image alt="" height={100} width={100} className='py-4 px-2 rounded-3xl' src="/image-product-4-thumbnail.jpg" />
+            </div>
+          </div>
+        </div>
 
-            <div>
+        <div>
         </div>
 
         <div>
@@ -79,34 +78,34 @@ const handleIncrementQuantity = () => {
             <span className='text-neutral-grayish-blue line-through'>$250.00</span>
           </div>
 
-{/* add and substract btn with "add to cart btn" */}
-               <div className="md:flex mt-5 gap-4 ">
-               <div className="flex justify-center">
-               <div><button className='bg-neutral-grayish-blue py-4 px-4' 
-               onClick={handleDecrementQuantity}
-               ><Image alt=""  className='min-w-fit' src={minus} /></button></div>
+          {/* add and substract btn with "add to cart btn" */}
+          <div className="md:flex mt-5 gap-4 ">
+            <div className="flex justify-center">
+              <div><button className='bg-neutral-grayish-blue py-4 px-4'
+                onClick={handleDecrementQuantity}
+              ><Image alt="" className='min-w-fit' src={minus} /></button></div>
 
-               <div className=''><button className='bg-neutral-grayish-blue py-1.5 px-4'><span className="">{quantity}</span></button></div>
+              <div className=''><button className='bg-neutral-grayish-blue py-1.5 px-4'><span className="">{quantity}</span></button></div>
 
-               <div><button className='bg-neutral-grayish-blue py-3 px-4' 
-               onClick={handleIncrementQuantity}
-               ><Image alt="" className="min-w-fit"  src={plus} /></button></div>
-               </div>
-
-
-{/* cart svg and "add to cart btn" */}
-               <Button onClick={handleAddToCart}> 
-                <div>
-                   <Image alt="" src={cart2} className="min-w-fit"/>
-                  </div>
-                  <div>
-                    <span className='text-white font-sans font-bold'>Add to cart</span>
-                    </div>
-                    </Button>
-               </div>
-
+              <div><button className='bg-neutral-grayish-blue py-3 px-4'
+                onClick={handleIncrementQuantity}
+              ><Image alt="" className="min-w-fit" src={plus} /></button></div>
             </div>
+
+
+            {/* cart svg and "add to cart btn" */}
+            <Button onClick={handleAddToCart}>
+              <div>
+                <Image alt="" src={cart2} className="min-w-fit" />
+              </div>
+              <div>
+                <span className='text-white font-sans font-bold'>Add to cart</span>
+              </div>
+            </Button>
+          </div>
+
         </div>
+      </div>
     </section>
   );
 };
