@@ -1,7 +1,9 @@
-import React from 'react'
+import { CartContext } from '@/contexts/CartContext';
+import React, { useContext } from 'react'
 
 const CartItem = ({ cartItem }) => {
-const {name, quantity, imageURL, price } = cartItem;
+const {quantity} = useContext(CartContext)
+const {name, imageURL, price } = cartItem;
 
   return (
     <div className='flex gap-4'>
