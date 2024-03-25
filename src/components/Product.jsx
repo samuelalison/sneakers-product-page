@@ -191,7 +191,7 @@ const Product = () => {
         <div>
           <div><h3 className="text-primary font-bold font-sans">SNEAKER COMPANY</h3></div>
           <div className="mt-5"><h4 className="text-neutral-very-dark-blue font-bold text-4xl font-sans">Fall Limited Edition Sneakers</h4></div>
-          <div className="mt-10"><p className="text-neutral-grayish-blue font-sans">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p></div>
+          <div className="mt-10"><p className="text-neutral-grayish-blue font-sans">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they will withstand everything the weather can offer.</p></div>
           <div className='mt-10'>
             <span className='text-neutral-very-dark-blue font-bold font-sans text-2xl'>$125.00</span>
             <button className='bg-primary-pale ml-4 rounded-md'><span className='font-sans text-primary m-2 font-bold'>50%</span></button>

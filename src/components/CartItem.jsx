@@ -1,5 +1,6 @@
 import { CartContext } from '@/contexts/CartContext';
 import React, { useContext } from 'react'
+import Image from 'next/image';
 
 const CartItem = ({ cartItem }) => {
 const {quantity} = useContext(CartContext)
@@ -9,7 +10,7 @@ const {name, imageURL, price } = cartItem;
     <div className='flex gap-4'>
 
     <div className=''>
-      <img src={imageURL} alt='' className='w-[50px] h-[50px]'/>
+      <Image src={imageURL} alt='unknown' width={50} height={50}/>
     </div>
 
     <div className=''>

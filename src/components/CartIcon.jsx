@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import { CartContext } from '@/contexts/CartContext';
 import { useContext } from 'react';
 
+
+import iconCart from "../../public/icon-cart.svg";
 
 const CartIcon = () => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
@@ -9,7 +12,7 @@ const CartIcon = () => {
 
   return (
     <div className="cursor-pointer" onClick={toggleIsCartOpen}>
-       <img src='icon-cart.svg' />  
+       <Image src={iconCart} alt='icon-cart' />  
       {/* <span className="absolute text-xs font-bold bottom-12">{cartCount}</span> */}
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import Image from 'next/image';
 import Sidebar from './Sidebar';
 import CartIcon from './CartIcon';
 import CartDropdown from './CartDropdown';
@@ -23,12 +24,12 @@ export const Navbar = () => {
       <div className='flex items-center gap-4'>
       <div className="md:hidden">
         <button onClick={toggle}>
-          <img src="icon-menu.svg" alt="Menu" />
+          <Image src="icon-menu.svg" width={15} height={20} alt="Menu" />
         </button>
         </div>
         <div >
           <a>
-            <img src='logo.svg' className='md:pb-2'  />
+            <Image alt='logo' src='logo.svg' width={120} height={100} className='md:pb-2'  />
           </a>
         </div>
         <div className="hidden md:block">
@@ -50,7 +51,7 @@ export const Navbar = () => {
             {isCartOpen && <CartDropdown />}
           <div>
 
-          <img src='image-avatar.png' className='h-6 w-6' />
+          <Image alt='avatar' width={15} height={20} src='/image-avatar.png' className='h-6 w-6' />
           </div>
           </div>
           
