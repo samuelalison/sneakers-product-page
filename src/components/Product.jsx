@@ -35,7 +35,7 @@ const Product = () => {
   };
 
   const handleDecrementQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(prevQuantity => prevQuantity - 1);
       decrementCartItem(products[0].id);
     }
